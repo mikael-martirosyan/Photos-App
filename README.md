@@ -1,10 +1,10 @@
 # Photos-App
 Тестовое задание
 
-![Главный экран](https://drive.google.com/drive/folders/1nZgUBodz4ymvCkQHuBTDSMD2Nl7QQeNP?usp=sharing)
-![Экран регистрации](https://drive.google.com/file/d/1fQA8AUyOpixFZvWGrJSr0Nmq_cKLWz4S/view?usp=sharing)
-![Экран с фотографиями из галереи (до получения доступа)](https://drive.google.com/file/d/1ojWflaRROQjQM0U1BUeOBMfmkF7DPV6G/view?usp=sharing)
-![Экран с фотографиями из галереи](https://drive.google.com/file/d/1vYhk_YbUvrcMyeSNeGHEetpNfj9u7UNP/view?usp=sharing)
-![Экран меню](https://drive.google.com/file/d/1GFaC9IAdaXBnPEhFqd55IRBXYNTGLaZj/view?usp=sharing)
-![Экран с полноразмерным изображением](https://drive.google.com/file/d/1NqB4eYKL-iqe2e82XYcdFOknCxYjdhRs/view?usp=sharing)
-![Экран со списком пользователей](https://drive.google.com/file/d/1Nqthp0Gt7VAJYjYCXX8JyiDB7TYHmdvW/view?usp=sharing)
+![Главный экран](https://user-images.githubusercontent.com/61461432/162605311-e1bae8f8-cc9d-4e27-ad05-c3269c9ff213.png)
+![Экран регистрации](https://user-images.githubusercontent.com/61461432/162605324-f748b8f7-241d-4eaf-81aa-942a2f880025.png)
+![Экран с фотографиями из галереи (до получения доступа)](https://user-images.githubusercontent.com/61461432/162605335-dbdb8465-7041-4ec5-a260-787bc5969a99.png)
+![Экран с фотографиями из галереи](https://user-images.githubusercontent.com/61461432/162605345-3717545e-359b-4d60-bda4-148fa2a49b6f.png)
+![Экран меню](https://user-images.githubusercontent.com/61461432/162605386-c33fe542-dbf1-48c7-b8d3-f6f827651a57.png)
+![Экран с полноразмерным изображением](https://user-images.githubusercontent.com/61461432/162605400-49b90fd6-1f8b-4238-b31d-84bb00716ed4.png)
+![Экран со списком пользователей](https://user-images.githubusercontent.com/61461432/162605422-5de0d59f-ac66-476b-aaa2-c7a1cfacbfe3.png)
