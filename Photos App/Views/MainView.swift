@@ -20,7 +20,7 @@ class MainView: UIView {
     
     let login: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Введите логин"
+        textField.placeholder = "Введите email"
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.clearButtonMode = .whileEditing
