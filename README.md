@@ -1,7 +1,7 @@
 # Photos-App
 Тестовое задание
 
-![Главный экран](https://user-images.githubusercontent.com/61461432/162605513-04b3435d-5a51-4afb-a0a4-36e18381ec65.png)
+![Главный экран](https://user-images.githubusercontent.com/61461432/162605557-6eb88cec-0f82-4c55-9bcf-fc84837babb4.png)
 ![Экран регистрации](https://user-images.githubusercontent.com/61461432/162605324-f748b8f7-241d-4eaf-81aa-942a2f880025.png)
 ![Экран с фотографиями из галереи (до получения доступа)](https://user-images.githubusercontent.com/61461432/162605335-dbdb8465-7041-4ec5-a260-787bc5969a99.png)
 ![Экран с фотографиями из галереи](https://user-images.githubusercontent.com/61461432/162605345-3717545e-359b-4d60-bda4-148fa2a49b6f.png)
