@@ -1,10 +1,10 @@
 # Photos-App
 Тестовое задание
 
-![Главный экран](https://user-images.githubusercontent.com/61461432/162605557-6eb88cec-0f82-4c55-9bcf-fc84837babb4.png)
-![Экран регистрации](https://user-images.githubusercontent.com/61461432/162605324-f748b8f7-241d-4eaf-81aa-942a2f880025.png)
-![Экран с фотографиями из галереи (до получения доступа)](https://user-images.githubusercontent.com/61461432/162605335-dbdb8465-7041-4ec5-a260-787bc5969a99.png)
-![Экран с фотографиями из галереи](https://user-images.githubusercontent.com/61461432/162605345-3717545e-359b-4d60-bda4-148fa2a49b6f.png)
-![Экран меню](https://user-images.githubusercontent.com/61461432/162605386-c33fe542-dbf1-48c7-b8d3-f6f827651a57.png)
-![Экран с полноразмерным изображением](https://user-images.githubusercontent.com/61461432/162605400-49b90fd6-1f8b-4238-b31d-84bb00716ed4.png)
-![Экран со списком пользователей](https://user-images.githubusercontent.com/61461432/162605422-5de0d59f-ac66-476b-aaa2-c7a1cfacbfe3.png)
+![1](https://user-images.githubusercontent.com/61461432/162605616-7fd2e082-55a4-419a-916c-d08ebe9afbd9.png)
+![2](https://user-images.githubusercontent.com/61461432/162605618-fc597936-9598-42b0-a5a1-034f21ebf3ef.png)
+![3](https://user-images.githubusercontent.com/61461432/162605619-ef53cf9e-35c7-43ff-899f-5b6a4acf3576.png)
+![4](https://user-images.githubusercontent.com/61461432/162605621-91c4b13f-7982-4d59-8668-d8b008a93f71.png)
+![5](https://user-images.githubusercontent.com/61461432/162605624-1e237c9b-bd20-4638-b168-64e35b285fa5.png)
+![6](https://user-images.githubusercontent.com/61461432/162605628-f5b4195f-e207-4dbb-8cdf-a7452a7019ff.png)
+![7](https://user-images.githubusercontent.com/61461432/162605630-0f40ffa9-bcc3-4c76-88a5-acaebd160ff7.png)
