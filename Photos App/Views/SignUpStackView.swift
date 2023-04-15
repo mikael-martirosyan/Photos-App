@@ -9,77 +9,30 @@ import UIKit
 
 class SignUpStackView: UIStackView {
     
-    let name: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Имя"
-        textField.textColor = .black
-        textField.font = UIFont.systemFont(ofSize: 17)
-        textField.clearButtonMode = .whileEditing
-        textField.borderStyle = .roundedRect
-        textField.autocorrectionType = .no
-        return textField
-    }()
-    
-    let secondName: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Фамилия"
-        textField.textColor = .black
-        textField.font = UIFont.systemFont(ofSize: 17)
-        textField.clearButtonMode = .whileEditing
-        textField.borderStyle = .roundedRect
-        textField.autocorrectionType = .no
-        return textField
-    }()
-    
-    let id: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Ник"
-        textField.textColor = .black
-        textField.font = UIFont.systemFont(ofSize: 17)
-        textField.clearButtonMode = .whileEditing
-        textField.borderStyle = .roundedRect
-        textField.autocorrectionType = .no
-        return textField
-    }()
-    
-    let email: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Почта"
-        textField.textColor = .black
-        textField.font = UIFont.systemFont(ofSize: 17)
-        textField.clearButtonMode = .whileEditing
-        textField.borderStyle = .roundedRect
-        textField.autocorrectionType = .no
-        return textField
-    }()
-    
-    let password: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Пароль"
-        textField.textColor = .black
-        textField.font = UIFont.systemFont(ofSize: 17)
-        textField.clearButtonMode = .whileEditing
-        textField.borderStyle = .roundedRect
-        textField.autocorrectionType = .no
-        textField.isSecureTextEntry = true
-        return textField
-    }()
+    let name        = PASignUpTextField(placeholder: "Имя")
+    let secondName  = PASignUpTextField(placeholder: "Фамилия")
+    let id          = PASignUpTextField(placeholder: "Ник")
+    let email       = PASignUpTextField(placeholder: "Email")
+    let password    = PASignUpTextField(placeholder: "Пароль",
+                                             isSecureTextEntry: true)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupConstraints()
+        setupConfig()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupConstraints() {
+    private func setupConfig() {
         addArrangedSubview(name)
         addArrangedSubview(secondName)
         addArrangedSubview(id)
         addArrangedSubview(email)
         addArrangedSubview(password)
+        
+        
     }
 }

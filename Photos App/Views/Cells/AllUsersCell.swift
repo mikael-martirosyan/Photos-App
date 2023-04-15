@@ -9,21 +9,8 @@ import UIKit
 
 class AllUsersCell: UITableViewCell {
 
-    let avatar: UIImageView = {
-        let imageView = UIImageView()
-        imageView.clipsToBounds = true
-        imageView.image = UIImage(systemName: "person")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-    
-    let name: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 20)
-        return label
-    }()
+    let avatarImageView = PARoundedImageView(name: "person")
+    let nameLabel = PANameLabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: CellIdentifier.allUsersCell.rawValue)
@@ -38,23 +25,24 @@ class AllUsersCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        avatar.layer.cornerRadius = avatar.frame.width / 2
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
     }
     
     private func setupContraints() {
-        addSubview(avatar)
-        avatar.translatesAutoresizingMaskIntoConstraints = false
-        avatar.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        avatar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        avatar.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        avatar.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        addSubview(avatarImageView)
+        addSubview(nameLabel)
         
-        addSubview(name)
-        name.translatesAutoresizingMaskIntoConstraints = false
-        name.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        name.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        name.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 5).isActive = true
-        name.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        NSLayoutConstraint.activate([
+            avatarImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 50),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 50),
+            
+            nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 5),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+        ])
     }
 }

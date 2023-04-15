@@ -12,7 +12,7 @@ extension MainViewController {
     func setupConfig() {
         view.backgroundColor = .systemBackground
     
-        mainView.signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+        mainView.enterButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
         mainView.signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))

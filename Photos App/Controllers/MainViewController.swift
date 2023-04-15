@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
     }
     
     @objc func signIn() {
-        guard let loginText = mainView.login.text, let passwordText = mainView.password.text else { return }
+        guard let loginText = mainView.loginTextField.text, let passwordText = mainView.passwordTextField.text else { return }
         
         guard let user = checkUser(email: loginText) else {
             

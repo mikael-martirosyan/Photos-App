@@ -9,17 +9,13 @@ import UIKit
 
 class PhotosCell: UICollectionViewCell {
     
-    let photoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    let photoImageView = PAPhotoImageView(image: nil)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupConstraints()
+        setupSubviews()
     }
     
     required init?(coder: NSCoder) {
@@ -27,12 +23,16 @@ class PhotosCell: UICollectionViewCell {
     }
     
     private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            photoImageView.topAnchor.constraint(equalTo: topAnchor),
+            photoImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+    
+    private func setupSubviews() {
         addSubview(photoImageView)
-        photoImageView.translatesAutoresizingMaskIntoConstraints = false
-        photoImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        photoImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
 }
 

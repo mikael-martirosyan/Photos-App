@@ -32,7 +32,6 @@ class MenuViewController: UIViewController {
         let navigationVC = UINavigationController(rootViewController: allUsersTVC)
         navigationVC.modalPresentationStyle = .fullScreen
         present(navigationVC, animated: true)
-        print(UserModel.shared.listOfUsers)
     }
     
     @objc private func logOut() {

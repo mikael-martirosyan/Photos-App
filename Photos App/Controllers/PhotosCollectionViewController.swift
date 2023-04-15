@@ -45,6 +45,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         checkStatus { status in
             guard status else { return }
             self.fetchAsset()
+            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -80,6 +81,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         let fullScreenPhotoVC = FullScreenPhotoViewController()
         
         PHImageManager.default().requestImage(for: assets[indexPath.item], targetSize: fullScreenPhotoVC.imageView.frame.size, contentMode: .aspectFit, options: nil) { image, _ in
+            print(Thread.current)
             guard let image = image else { return }
             DispatchQueue.main.async {
                 fullScreenPhotoVC.imageView.image = image

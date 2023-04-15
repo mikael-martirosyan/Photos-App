@@ -7,6 +7,8 @@
 
 import Foundation
 
+#warning("Сделать Reusable протокол")
+
 enum CellIdentifier: String {
     case photoCell = "PhotoCell"
     case allUsersCell = "AllUsersCell"

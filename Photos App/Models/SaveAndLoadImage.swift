@@ -7,6 +7,7 @@
 
 import UIKit
 
+#warning("Переименовать класс")
 class SaveAndLoadImage {
 
     static func saveImage(image: UIImage, id: String) {

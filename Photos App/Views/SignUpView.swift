@@ -20,16 +20,12 @@ class SignUpView: UIView {
         return label
     }()
     
-    let signUpButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Зарегистироваться", for: .normal)
-        button.setTitleColor(UIColor.systemBlue, for: .normal)
-        return button
-    }()
+    let signUpButton = PAFilledButton(title: "Зарегистироваться")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupConfig()
         setupContraints()
     }
     
@@ -37,31 +33,38 @@ class SignUpView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupContraints() {
-        addSubview(signUpTitle)
+    private func setupConfig() {
         signUpTitle.translatesAutoresizingMaskIntoConstraints = false
-        signUpTitle.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        signUpTitle.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
-        signUpTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
-        signUpTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
-        
-        addSubview(signUpButton)
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        signUpButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
-        signUpButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
-        signUpButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
         
-        addSubview(signUpStackView)
         signUpStackView.translatesAutoresizingMaskIntoConstraints = false
         signUpStackView.axis = .vertical
         signUpStackView.spacing = 5.0
         signUpStackView.distribution = .fillEqually
-        signUpStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        signUpStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        signUpStackView.topAnchor.constraint(equalTo: signUpTitle.bottomAnchor, constant: 100).isActive = true
-        signUpStackView.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -100).isActive = true
-        signUpStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
-        signUpStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
+    }
+    
+    private func setupContraints() {
+        addSubview(signUpTitle)
+        addSubview(signUpButton)
+        addSubview(signUpStackView)
+
+
+        NSLayoutConstraint.activate([
+            signUpTitle.centerXAnchor.constraint(equalTo: centerXAnchor),
+            signUpTitle.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 100),
+            signUpTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            signUpTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
+        
+            signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            signUpButton.topAnchor.constraint(equalTo: signUpStackView.bottomAnchor, constant: 50),
+            signUpButton.heightAnchor.constraint(equalToConstant: 50),
+            signUpButton.widthAnchor.constraint(equalToConstant: 200),
+            
+            signUpStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            signUpStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            signUpStackView.topAnchor.constraint(equalTo: signUpTitle.bottomAnchor, constant: 100),
+            signUpStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            signUpStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50)
+        ])
     }
 }

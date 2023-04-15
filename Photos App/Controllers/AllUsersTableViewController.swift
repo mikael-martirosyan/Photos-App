@@ -49,9 +49,9 @@ class AllUsersTableViewController: UITableViewController {
         let user = users[indexPath.row]
         
         if let image = SaveAndLoadImage.loadImage(id: user.id) {
-            cell.avatar.image = image
+            cell.avatarImageView.image = image
         }
-        cell.name.text = user.name + " " + user.secondName
+        cell.nameLabel.text = user.name + " " + user.secondName
         
         return cell
     }
