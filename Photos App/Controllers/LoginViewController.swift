@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  LoginViewController.swift
 //  Photos App
 //
 //  Created by Микаэл Мартиросян on 04.04.2022.
@@ -8,9 +8,9 @@
 import UIKit
 import CoreHaptics
 
-class MainViewController: UIViewController {
+class LoginViewController: UIViewController {
     
-    let mainView = MainView()
+    let loginView = LoginView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
     }
     
     @objc func signIn() {
-        guard let loginText = mainView.loginTextField.text, let passwordText = mainView.passwordTextField.text else { return }
+        guard let loginText = loginView.loginTextField.text, let passwordText = loginView.passwordTextField.text else { return }
         
         guard let user = checkUser(email: loginText) else {
             

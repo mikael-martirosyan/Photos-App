@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if UserModel.shared.usesIsAuthorized {
             window?.rootViewController = ContainerViewController()
         } else {
-            window?.rootViewController = MainViewController()
+            window?.rootViewController = LoginViewController()
         }
         window?.makeKeyAndVisible()
     }

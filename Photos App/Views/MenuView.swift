@@ -9,58 +9,18 @@ import UIKit
 
 class MenuView: UIView {
     
-    let avatar: UIImageView = {
-        let imageView = UIImageView()
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(systemName: "person") // Default value
-        return imageView
-    }()
+    let avatarImageView = PARoundedImageView(name: "user")
     
-    let name: UILabel = {
-        let label = UILabel()
-        label.text = "" // Default value
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 23)
-        return label
-    }()
+    let nameLabel = PANameLabel(heading: .big)
+    let idLabel = PAIDLabel()
     
-    let secondName: UILabel = {
-        let label = UILabel()
-        label.text = "" // Default value
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 23)
-        return label
-    }()
-    
-    let id: UILabel = {
-        let label = UILabel()
-        label.textColor = .lightGray
-        label.font = UIFont.systemFont(ofSize: 14)
-        return label
-    }()
-    
-    let listOfUsers: UIButton = {
-        let button = UIButton()
-        button.setTitle("List of users", for: .normal)
-        button.setTitleColor(UIColor.link, for: .normal)
-        button.contentHorizontalAlignment = .left
-        return button
-    }()
-    
-    let logOut: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right"), for: .normal)
-        button.tintColor = .red
-        button.setTitle("Exit", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.contentHorizontalAlignment = .left
-        return button
-    }()
+    let listOfUsers = PAPlainButton(title: "List of users", alignment: .left, style: .default)
+    let logOut = PAPlainButton(title: "Exit", alignment: .left, style: .cancel)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupSubviews()
         setupConstraints()
     }
     
@@ -68,48 +28,36 @@ class MenuView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        avatar.layer.cornerRadius = avatar.frame.width / 2
+    private func setupSubviews() {
+        addSubview(avatarImageView)
+        addSubview(idLabel)
+        addSubview(nameLabel)
+        addSubview(listOfUsers)
+        addSubview(logOut)
     }
     
     private func setupConstraints() {
-        addSubview(avatar)
-        avatar.translatesAutoresizingMaskIntoConstraints = false
-        avatar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        avatar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        avatar.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        avatar.widthAnchor.constraint(equalToConstant: 70).isActive = true
-        
-        addSubview(id)
-        id.translatesAutoresizingMaskIntoConstraints = false
-        id.topAnchor.constraint(equalTo: avatar.bottomAnchor, constant: 10).isActive = true
-        id.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        id.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        addSubview(secondName)
-        secondName.translatesAutoresizingMaskIntoConstraints = false
-        secondName.topAnchor.constraint(equalTo: id.bottomAnchor, constant: 15).isActive = true
-        secondName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        secondName.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        addSubview(name)
-        name.translatesAutoresizingMaskIntoConstraints = false
-        name.topAnchor.constraint(equalTo: secondName.bottomAnchor, constant: 5).isActive = true
-        name.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        name.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        addSubview(listOfUsers)
-        listOfUsers.translatesAutoresizingMaskIntoConstraints = false
-        listOfUsers.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 30).isActive = true
-        listOfUsers.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        listOfUsers.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        addSubview(logOut)
-        logOut.translatesAutoresizingMaskIntoConstraints = false
-        logOut.topAnchor.constraint(equalTo: listOfUsers.bottomAnchor, constant: 50).isActive = true
-        logOut.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        logOut.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 70),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 70),
+            
+            idLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 10),
+            idLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            idLabel.widthAnchor.constraint(equalToConstant: 150),
+            
+            nameLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 15),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            nameLabel.widthAnchor.constraint(equalToConstant: 150),
+            
+            listOfUsers.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
+            listOfUsers.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            listOfUsers.widthAnchor.constraint(equalToConstant: 150),
+            
+            logOut.topAnchor.constraint(equalTo: listOfUsers.bottomAnchor, constant: 50),
+            logOut.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            logOut.widthAnchor.constraint(equalToConstant: 150)
+        ])
     }
 }

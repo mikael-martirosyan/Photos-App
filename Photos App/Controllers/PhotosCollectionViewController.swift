@@ -29,6 +29,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     
     deinit {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
+        print("PhotosCollectionViewController closed")
     }
     
     private func setupConfig() {
@@ -36,7 +37,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         title = "@\(id)"
         
         collectionView.contentSize = .zero
-        self.collectionView!.register(PhotosCell.self, forCellWithReuseIdentifier: CellIdentifier.photoCell.rawValue)
+        self.collectionView!.register(PhotoCell.self, forCellWithReuseIdentifier: CellIdentifier.photoCell.rawValue)
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
@@ -66,7 +67,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.photoCell.rawValue, for: indexPath) as? PhotosCell else { fatalError() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.photoCell.rawValue, for: indexPath) as? PhotoCell else { fatalError() }
     
         PHImageManager.default().requestImage(for: assets[indexPath.item], targetSize: cell.photoImageView.bounds.size, contentMode: .aspectFit, options: nil) { image, _ in
             guard let image = image else { return }

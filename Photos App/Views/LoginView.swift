@@ -7,15 +7,15 @@
 
 import UIKit
 
-class MainView: UIView {
+class LoginView: UIView {
     
-    let loginTitle = PATitleLabel(text: "Вход")
+    let title = PATitleLabel(text: "Вход")
     
     let loginTextField = PALoginTextField(placeholder: "Введите email")
     let passwordTextField = PALoginTextField(placeholder: "Введите пароль", isSecureTextEntry: true)
     
     let enterButton = PAFilledButton(title: "Войти")
-    let signUpButton = PAPlainButton(title: "Регистрация")
+    let signUpButton = PAPlainButton(title: "Регистрация", style: .default)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +29,7 @@ class MainView: UIView {
     }
     
     private func setupSubviews() {
-        addSubview(loginTitle)
+        addSubview(title)
         addSubview(loginTextField)
         addSubview(passwordTextField)
         addSubview(enterButton)
@@ -37,14 +37,13 @@ class MainView: UIView {
     }
     
     private func setupConstraints() {
-        
         NSLayoutConstraint.activate([
-            loginTitle.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 70),
-            loginTitle.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loginTitle.heightAnchor.constraint(equalToConstant: 50),
-            loginTitle.widthAnchor.constraint(equalToConstant: 150),
+            title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 70),
+            title.centerXAnchor.constraint(equalTo: centerXAnchor),
+            title.heightAnchor.constraint(equalToConstant: 50),
+            title.widthAnchor.constraint(equalToConstant: 150),
             
-            loginTextField.topAnchor.constraint(equalTo: loginTitle.bottomAnchor, constant: 150),
+            loginTextField.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 150),
             loginTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
             loginTextField.heightAnchor.constraint(equalToConstant: 50),
             loginTextField.widthAnchor.constraint(equalToConstant: 200),

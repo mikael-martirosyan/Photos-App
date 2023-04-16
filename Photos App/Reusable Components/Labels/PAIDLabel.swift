@@ -1,14 +1,14 @@
 //
-//  PAPlainButton.swift
+//  PAIDLabel.swift
 //  Photos App
 //
-//  Created by Микаэл Мартиросян on 14.04.2023.
+//  Created by Микаэл Мартиросян on 16.04.2023.
 //
 
 import UIKit
 
-class PAPlainButton: UIButton {
-    
+class PAIDLabel: UILabel {
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -19,14 +19,9 @@ class PAPlainButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(title: String) {
-        self.init(frame: .zero)
-        
-        setTitle(title, for: .normal)
-    }
-    
     private func configure() {
-        setTitleColor(UIColor.systemBlue, for: .normal)
+        textColor = .lightGray
+        font = UIFont.systemFont(ofSize: 14)
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

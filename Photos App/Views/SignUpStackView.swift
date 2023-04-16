@@ -14,11 +14,12 @@ class SignUpStackView: UIStackView {
     let id          = PASignUpTextField(placeholder: "Ник")
     let email       = PASignUpTextField(placeholder: "Email")
     let password    = PASignUpTextField(placeholder: "Пароль",
-                                             isSecureTextEntry: true)
+                                        isSecureTextEntry: true)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupSubviews()
         setupConfig()
     }
     
@@ -26,13 +27,18 @@ class SignUpStackView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupConfig() {
+    private func setupSubviews() {
         addArrangedSubview(name)
         addArrangedSubview(secondName)
         addArrangedSubview(id)
         addArrangedSubview(email)
         addArrangedSubview(password)
-        
-        
+    }
+    
+    private func setupConfig() {
+        axis = .vertical
+        spacing = 5.0
+        distribution = .fillEqually
+        translatesAutoresizingMaskIntoConstraints = false
     }
 }

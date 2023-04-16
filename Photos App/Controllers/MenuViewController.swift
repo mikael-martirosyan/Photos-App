@@ -14,6 +14,7 @@ protocol MenuViewControllerDelegate: AnyObject {
 class MenuViewController: UIViewController {
     
     weak var delegate: MenuViewControllerDelegate?
+    
     private let menuView = MenuView()
     
     override func viewDidLoad() {
@@ -25,10 +26,11 @@ class MenuViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: .changeAvatar, object: nil)
+        print("MenuViewController closed")
     }
     
     @objc private func toListOfUsers() {
-        let allUsersTVC = AllUsersTableViewController()
+        let allUsersTVC = AllUsersTableViewController(title: "List of users")
         let navigationVC = UINavigationController(rootViewController: allUsersTVC)
         navigationVC.modalPresentationStyle = .fullScreen
         present(navigationVC, animated: true)
@@ -43,10 +45,10 @@ class MenuViewController: UIViewController {
         guard let user = UserModel.shared.currentUser else { return }
         let image = SaveAndLoadImage.loadImage(id: user.id)
         if image != nil {
-            menuView.avatar.image = image
-            menuView.avatar.layoutIfNeeded()
+            menuView.avatarImageView.image = image
+            menuView.avatarImageView.layoutIfNeeded()
         } else {
-            menuView.avatar.image = UIImage(systemName: "person")
+            menuView.avatarImageView.image = UIImage(systemName: "person")
         }
     }
     
@@ -55,12 +57,11 @@ class MenuViewController: UIViewController {
         
         guard let user = UserModel.shared.currentUser else { return }
         
-        menuView.name.text = user.name
-        menuView.secondName.text = user.secondName
-        menuView.id.text = "@\(user.id)"
+        menuView.nameLabel.text = "\(user.name)\n\(user.secondName)"
+        menuView.idLabel.text = "@\(user.id)"
         
         let image = SaveAndLoadImage.loadImage(id: user.id)
-        menuView.avatar.image = image
+        menuView.avatarImageView.image = image
         
         menuView.listOfUsers.addTarget(self, action: #selector(toListOfUsers), for: .touchUpInside)
         menuView.logOut.addTarget(self, action: #selector(logOut), for: .touchUpInside)

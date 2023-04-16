@@ -7,14 +7,15 @@
 
 import UIKit
 
-class AllUsersCell: UITableViewCell {
+class ListOfUsersCell: UITableViewCell {
 
-    let avatarImageView = PARoundedImageView(name: "person")
-    let nameLabel = PANameLabel()
+    let avatarImageView = PARoundedImageView(name: "user")
+    let nameLabel = PANameLabel(heading: .small)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: CellIdentifier.allUsersCell.rawValue)
         
+        setupSubviews()
         setupContraints()
     }
     
@@ -22,16 +23,12 @@ class AllUsersCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
+    private func setupSubviews() {
+        addSubview(avatarImageView)
+        addSubview(nameLabel)
     }
     
     private func setupContraints() {
-        addSubview(avatarImageView)
-        addSubview(nameLabel)
-        
         NSLayoutConstraint.activate([
             avatarImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
@@ -41,7 +38,7 @@ class AllUsersCell: UITableViewCell {
             nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 5),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 10),
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         ])
     }

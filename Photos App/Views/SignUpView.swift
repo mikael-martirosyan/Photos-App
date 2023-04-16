@@ -10,22 +10,13 @@ import UIKit
 class SignUpView: UIView {
     
     let signUpStackView = SignUpStackView()
-    
-    let signUpTitle: UILabel = {
-        let label = UILabel()
-        label.text = "Регистрация"
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 25)
-        label.textAlignment = .center
-        return label
-    }()
-    
+    let signUpTitle = PATitleLabel(text: "Регистрация")
     let signUpButton = PAFilledButton(title: "Зарегистироваться")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupConfig()
+        setupSubviews()
         setupContraints()
     }
     
@@ -33,22 +24,13 @@ class SignUpView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupConfig() {
-        signUpTitle.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        signUpStackView.translatesAutoresizingMaskIntoConstraints = false
-        signUpStackView.axis = .vertical
-        signUpStackView.spacing = 5.0
-        signUpStackView.distribution = .fillEqually
-    }
-    
-    private func setupContraints() {
+    private func setupSubviews() {
         addSubview(signUpTitle)
         addSubview(signUpButton)
         addSubview(signUpStackView)
-
-
+    }
+    
+    private func setupContraints() {
         NSLayoutConstraint.activate([
             signUpTitle.centerXAnchor.constraint(equalTo: centerXAnchor),
             signUpTitle.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 100),

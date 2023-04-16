@@ -1,5 +1,5 @@
 //
-//  PAImageView.swift
+//  PARoundedImageView.swift
 //  Photos App
 //
 //  Created by Микаэл Мартиросян on 13.04.2023.
@@ -34,6 +34,7 @@ class PARoundedImageView: UIImageView {
     private func configure() {
         clipsToBounds = true
         contentMode = .scaleAspectFill
+//        image = UIImage(named: "user")
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

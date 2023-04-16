@@ -10,31 +10,28 @@ import UIKit
 class AllUsersTableViewController: UITableViewController {
     
     private var users = [UserStruct]()
+    private let closeButton = PACloseButton()
     
-    private let cancelButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "multiply"), for: .normal)
-        button.tintColor = .systemBlue
-        return button
-    }()
-
+    init(title: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.title = title
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.backgroundColor = .systemBackground
-        title = "List of users"
-        
-        tableView.register(AllUsersCell.self, forCellReuseIdentifier: CellIdentifier.allUsersCell.rawValue)
+        tableView.register(ListOfUsersCell.self, forCellReuseIdentifier: CellIdentifier.allUsersCell.rawValue)
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "multiply"), style: .done, target: self, action: #selector(cancel))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "multiply"), style: .done, target: self, action: #selector(closeController))
         
         users = UserModel.shared.listOfUsers
         
-        cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
-    }
-    
-    @objc private func cancel() {
-        dismiss(animated: true)
+        closeButton.addTarget(self, action: #selector(closeController), for: .touchUpInside)
     }
 
     // MARK: - Table view data source
@@ -44,7 +41,7 @@ class AllUsersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.allUsersCell.rawValue, for: indexPath) as? AllUsersCell else { fatalError() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.allUsersCell.rawValue, for: indexPath) as? ListOfUsersCell else { fatalError() }
 
         let user = users[indexPath.row]
         
@@ -64,5 +61,9 @@ class AllUsersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    @objc private func closeController() {
+        dismiss(animated: true)
     }
 }

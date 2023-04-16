@@ -25,9 +25,11 @@ class ContainerViewController: UIViewController {
     }
     
     deinit {
-        let mainVC = MainViewController()
-        mainVC.modalPresentationStyle = .fullScreen
-        present(mainVC, animated: true)
+//        let mainVC = LoginViewController()
+//        mainVC.modalPresentationStyle = .fullScreen
+//        present(mainVC, animated: true)
+        
+        print("ContainerViewController closed")
     }
     
     private func addSubView() {
@@ -110,6 +112,9 @@ extension ContainerViewController: MenuViewControllerDelegate {
     
     func logOut() {
         UserModel.shared.currentUser = nil
+        let vc = LoginViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
         dismiss(animated: true)
     }
 }

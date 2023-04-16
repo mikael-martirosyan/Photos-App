@@ -1,13 +1,13 @@
 //
-//  PANameLabel.swift
+//  PACloseButton.swift
 //  Photos App
 //
-//  Created by Микаэл Мартиросян on 15.04.2023.
+//  Created by Микаэл Мартиросян on 16.04.2023.
 //
 
 import UIKit
 
-class PANameLabel: UILabel {
+class PACloseButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,9 +20,7 @@ class PANameLabel: UILabel {
     }
     
     private func configure() {
-        text = ""
-        textColor = .black
-        font = UIFont.systemFont(ofSize: 20)
-        translatesAutoresizingMaskIntoConstraints = false
+        setImage(UIImage(systemName: "multiply"), for: .normal)
+        tintColor = .systemBlue
     }
 }
