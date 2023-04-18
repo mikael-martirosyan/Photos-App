@@ -9,19 +9,30 @@ import UIKit
 
 class SignUpView: UIView {
     
+    // MARK: - Properties
+    
     let signUpStackView = SignUpStackView()
     let signUpTitle = PATitleLabel(text: "Регистрация")
     let signUpButton = PAFilledButton(title: "Зарегистироваться")
     
+    // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        configure()
         setupSubviews()
         setupContraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Functions
+    
+    private func configure() {
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupSubviews() {
@@ -37,16 +48,15 @@ class SignUpView: UIView {
             signUpTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
             signUpTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
         
+            signUpStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            signUpStackView.topAnchor.constraint(equalTo: signUpTitle.bottomAnchor, constant: 75),
+            signUpStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            signUpStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
+
             signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             signUpButton.topAnchor.constraint(equalTo: signUpStackView.bottomAnchor, constant: 50),
             signUpButton.heightAnchor.constraint(equalToConstant: 50),
-            signUpButton.widthAnchor.constraint(equalToConstant: 200),
-            
-            signUpStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            signUpStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            signUpStackView.topAnchor.constraint(equalTo: signUpTitle.bottomAnchor, constant: 100),
-            signUpStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
-            signUpStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50)
+            signUpButton.widthAnchor.constraint(equalToConstant: 200)
         ])
     }
 }

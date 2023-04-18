@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ContainerViewController: UIViewController {
+class ContainerController: UIViewController {
+    
+    // MARK: - Private properties
     
     private enum MenuState { case isOpened, isClosed }
     
@@ -17,44 +19,17 @@ class ContainerViewController: UIViewController {
     private lazy var menuVC = MenuViewController()
     private var navigationVC: UINavigationController?
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addSubView()
+        setupMenuVC()
+        setupPhotosVC()
         setupGestureRecognizer()
     }
     
-    deinit {
-//        let mainVC = LoginViewController()
-//        mainVC.modalPresentationStyle = .fullScreen
-//        present(mainVC, animated: true)
-        
-        print("ContainerViewController closed")
-    }
-    
-    private func addSubView() {
-        menuVC.delegate = self
-        addChild(menuVC)
-        view.addSubview(menuVC.view)
-        menuVC.didMove(toParent: self)
-    
-        photosCVC.delegate = self
-        let navigationVC = UINavigationController(rootViewController: photosCVC)
-        addChild(navigationVC)
-        view.addSubview(navigationVC.view)
-        navigationVC.didMove(toParent: self)
-        self.navigationVC = navigationVC
-    }
-    
-    private func setupGestureRecognizer() {
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeToOpenMenu))
-        rightSwipe.direction = .right
-        view.addGestureRecognizer(rightSwipe)
-        
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeToCloseMenu))
-        leftSwipe.direction = .left
-        view.addGestureRecognizer(leftSwipe)
-    }
+    // MARK: - Objc functions
     
     @objc private func swipeToOpenMenu() {
         switch menuState {
@@ -73,20 +48,34 @@ class ContainerViewController: UIViewController {
             break
         }
     }
-}
-
-extension ContainerViewController: PhotosControllerDelegate {
-    func didTapMenuButton() {
-        switch menuState {
-        case .isClosed:
-            changeState(moveTo: .isOpened)
-        case .isOpened:
-            changeState(moveTo: .isClosed)
-        }
+    
+    // MARK: - Functions
+    
+    private func setupPhotosVC() {
+        photosCVC.delegate = self
+        let navigationVC = UINavigationController(rootViewController: photosCVC)
+        addChild(navigationVC)
+        view.addSubview(navigationVC.view)
+        navigationVC.didMove(toParent: self)
+        self.navigationVC = navigationVC
     }
-}
-
-extension ContainerViewController: MenuViewControllerDelegate {
+    
+    private func setupMenuVC() {
+        menuVC.delegate = self
+        addChild(menuVC)
+        view.addSubview(menuVC.view)
+        menuVC.didMove(toParent: self)
+    }
+    
+    private func setupGestureRecognizer() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeToOpenMenu))
+        rightSwipe.direction = .right
+        view.addGestureRecognizer(rightSwipe)
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeToCloseMenu))
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
+    }
     
     private func changeState(moveTo: MenuState) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
@@ -109,12 +98,43 @@ extension ContainerViewController: MenuViewControllerDelegate {
             }
         }
     }
-    
+}
+
+// MARK: - ContainerController + PhotosControllerDelegate
+
+extension ContainerController: PhotosControllerDelegate {
+    func didTapMenuButton() {
+        switch menuState {
+        case .isClosed:
+            changeState(moveTo: .isOpened)
+        case .isOpened:
+            changeState(moveTo: .isClosed)
+        }
+    }
+}
+
+// MARK: - ContainerController + MenuViewControllerDelegate
+
+extension ContainerController: MenuViewControllerDelegate {
     func logOut() {
         UserModel.shared.currentUser = nil
-        let vc = LoginViewController()
+        
+        menuVC.willMove(toParent: nil)
+        menuVC.view.removeFromSuperview()
+        menuVC.removeFromParent()
+        
+        photosCVC.willMove(toParent: nil)
+        photosCVC.view.removeFromSuperview()
+        photosCVC.removeFromParent()
+        
+        navigationVC?.willMove(toParent: nil)
+        navigationVC?.view.removeFromSuperview()
+        navigationVC?.removeFromParent()
+        
+        dismiss(animated: true)
+        
+        let vc = LoginController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
-        dismiss(animated: true)
     }
 }

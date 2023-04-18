@@ -9,33 +9,39 @@ import UIKit
 
 class SignUpStackView: UIStackView {
     
-    let name        = PASignUpTextField(placeholder: "Имя")
-    let secondName  = PASignUpTextField(placeholder: "Фамилия")
-    let id          = PASignUpTextField(placeholder: "Ник")
-    let email       = PASignUpTextField(placeholder: "Email")
-    let password    = PASignUpTextField(placeholder: "Пароль",
-                                        isSecureTextEntry: true)
+    // MARK: - Properties
+    
+    let nameTextField        = PASignUpTextField(placeholder: "Имя")
+    let secondNameTextField  = PASignUpTextField(placeholder: "Фамилия")
+    let idTextField          = PASignUpTextField(placeholder: "Ник")
+    let emailTextField       = PASignUpTextField(placeholder: "Email")
+    let passwordTextField    = PASignUpTextField(placeholder: "Пароль",
+                                                 isSecureTextEntry: true)
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupSubviews()
-        setupConfig()
+        setupConfiguration()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Functions
+    
     private func setupSubviews() {
-        addArrangedSubview(name)
-        addArrangedSubview(secondName)
-        addArrangedSubview(id)
-        addArrangedSubview(email)
-        addArrangedSubview(password)
+        addArrangedSubview(nameTextField)
+        addArrangedSubview(secondNameTextField)
+        addArrangedSubview(idTextField)
+        addArrangedSubview(emailTextField)
+        addArrangedSubview(passwordTextField)
     }
     
-    private func setupConfig() {
+    private func setupConfiguration() {
         axis = .vertical
         spacing = 5.0
         distribution = .fillEqually

@@ -10,30 +10,43 @@ import Photos
 
 class FullScreenPhotoViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    // MARK: - Enum
     
-    var state = 0
+    private enum StateEnum { case closed, opened }
+    
+    #warning("Порядок свойств")
+    
+    // MARK: - Internal properties
+
+    let imageView = PAPhotoImageView(photoSize: .big, contentMode: .scaleAspectFit)
+    
+    // MARK: - Private properties
+    
+    private var state: StateEnum = .closed
+    
+    // MARK: - Life Cycle
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupConfig()
+        setupUI()
+        setupSubviews()
         setupContraints()
     }
     
+    // MARK: - Objc functions
+    
     @objc private func hideStatusBar() {
-        if state == 0 {
+        switch state {
+        case .closed:
             UIApplication.shared.isStatusBarHidden = true
             navigationController?.isNavigationBarHidden = true
-            state = 1
-        } else {
+            state = .opened
+        case .opened:
             UIApplication.shared.isStatusBarHidden = false
             navigationController?.isNavigationBarHidden = false
-            state = 0
+            state = .closed
         }
     }
     
@@ -45,23 +58,31 @@ class FullScreenPhotoViewController: UIViewController, UIGestureRecognizerDelega
         NotificationCenter.default.post(name: .changeAvatar, object: nil)
     }
     
+    // MARK: - Functions
+    
     private func setupConfig() {
-        view.backgroundColor = .systemBackground
-                    
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сделать аватаркой", style: .plain, target: self, action: #selector(addAvatar))
+    }
+    
+    private func setupUI() {
+        view.backgroundColor = .systemBackground
         
-        let tapGR = UITapGestureRecognizer(target: self, action: #selector(hideStatusBar))
-        tapGR.delegate = self
-        view.addGestureRecognizer(tapGR)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideStatusBar))
+        tapGestureRecognizer.delegate = self
+        view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    private func setupSubviews() {
+        view.addSubview(imageView)
     }
 
     private func setupContraints() {
-        view.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: view.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 }

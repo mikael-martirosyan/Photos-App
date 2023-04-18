@@ -9,17 +9,21 @@ import UIKit
 
 class LoginView: UIView {
     
+    // MARK: - Properties
+    
     let title = PATitleLabel(text: "Вход")
     
-    let loginTextField = PALoginTextField(placeholder: "Введите email")
-    let passwordTextField = PALoginTextField(placeholder: "Введите пароль", isSecureTextEntry: true)
+    let loginStackView = LoginStackView()
     
     let enterButton = PAFilledButton(title: "Войти")
-    let signUpButton = PAPlainButton(title: "Регистрация", style: .default)
+    let signUpButton = PAPlainButton(title: "Регистрация", style: .link)
+    
+    // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupConfiguration()
         setupSubviews()
         setupConstraints()
     }
@@ -28,10 +32,15 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Functions
+    
+    private func setupConfiguration() {
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     private func setupSubviews() {
         addSubview(title)
-        addSubview(loginTextField)
-        addSubview(passwordTextField)
+        addSubview(loginStackView)
         addSubview(enterButton)
         addSubview(signUpButton)
     }
@@ -43,17 +52,10 @@ class LoginView: UIView {
             title.heightAnchor.constraint(equalToConstant: 50),
             title.widthAnchor.constraint(equalToConstant: 150),
             
-            loginTextField.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 150),
-            loginTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loginTextField.heightAnchor.constraint(equalToConstant: 50),
-            loginTextField.widthAnchor.constraint(equalToConstant: 200),
+            loginStackView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 150),
+            loginStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 20),
-            passwordTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-            passwordTextField.widthAnchor.constraint(equalToConstant: 200),
-            
-            enterButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 50),
+            enterButton.topAnchor.constraint(equalTo: loginStackView.bottomAnchor, constant: 50),
             enterButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             enterButton.heightAnchor.constraint(equalToConstant: 50),
             enterButton.widthAnchor.constraint(equalToConstant: 150),

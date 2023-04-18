@@ -20,8 +20,10 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupConfiguration()
+        setupUI()
+        setupSubviews()
         setupConstraints()
-        setupConfig()
     }
     
     deinit {
@@ -30,7 +32,7 @@ class MenuViewController: UIViewController {
     }
     
     @objc private func toListOfUsers() {
-        let allUsersTVC = AllUsersTableViewController(title: "List of users")
+        let allUsersTVC = ListOfUsersController(title: "List of users")
         let navigationVC = UINavigationController(rootViewController: allUsersTVC)
         navigationVC.modalPresentationStyle = .fullScreen
         present(navigationVC, animated: true)
@@ -48,20 +50,21 @@ class MenuViewController: UIViewController {
             menuView.avatarImageView.image = image
             menuView.avatarImageView.layoutIfNeeded()
         } else {
-            menuView.avatarImageView.image = UIImage(systemName: "person")
+            fatalError("Image not found")
         }
     }
     
-    private func setupConfig() {
-        view.backgroundColor = .systemBackground
-        
+    private func setupConfiguration() {
         guard let user = UserModel.shared.currentUser else { return }
         
         menuView.nameLabel.text = "\(user.name)\n\(user.secondName)"
         menuView.idLabel.text = "@\(user.id)"
         
-        let image = SaveAndLoadImage.loadImage(id: user.id)
-        menuView.avatarImageView.image = image
+        if let image = SaveAndLoadImage.loadImage(id: user.id) {
+            menuView.avatarImageView.image = image
+        } else {
+            menuView.avatarImageView.image = UIImage(named: "user")
+        }
         
         menuView.listOfUsers.addTarget(self, action: #selector(toListOfUsers), for: .touchUpInside)
         menuView.logOut.addTarget(self, action: #selector(logOut), for: .touchUpInside)
@@ -69,12 +72,20 @@ class MenuViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(changeAvatar), name: .changeAvatar, object: nil)
     }
     
-    private func setupConstraints() {
+    private func setupUI() {
+        view.backgroundColor = .systemBackground
+    }
+    
+    private func setupSubviews() {
         view.addSubview(menuView)
-        menuView.translatesAutoresizingMaskIntoConstraints = false
-        menuView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        menuView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        menuView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            menuView.topAnchor.constraint(equalTo: view.topAnchor),
+            menuView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            menuView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 }

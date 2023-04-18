@@ -9,7 +9,7 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
     
-    let photoImageView = PAPhotoImageView(image: nil)
+    let photoImageView = PAPhotoImageView(photoSize: .small, contentMode: .scaleAspectFill)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

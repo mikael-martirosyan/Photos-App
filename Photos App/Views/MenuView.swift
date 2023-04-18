@@ -9,23 +9,34 @@ import UIKit
 
 class MenuView: UIView {
     
-    let avatarImageView = PARoundedImageView(name: "user")
+    // MARK: - Properties
+    
+    let avatarImageView = PARoundedImageView()
     
     let nameLabel = PANameLabel(heading: .big)
     let idLabel = PAIDLabel()
     
-    let listOfUsers = PAPlainButton(title: "List of users", alignment: .left, style: .default)
+    let listOfUsers = PAPlainButton(title: "List of users", alignment: .left, style: .link)
     let logOut = PAPlainButton(title: "Exit", alignment: .left, style: .cancel)
+    
+    // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupConfiguration()
         setupSubviews()
         setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Functions
+    
+    private func setupConfiguration() {
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupSubviews() {

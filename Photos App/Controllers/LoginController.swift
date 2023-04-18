@@ -6,46 +6,66 @@
 //
 
 import UIKit
-import CoreHaptics
 
-class LoginViewController: UIViewController {
+class LoginController: UIViewController {
+    
+    // MARK: - Properties
     
     let loginView = LoginView()
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupConfig()
+        setupUI()
+        setupSubviews()
         setupConstraints()
     }
     
+    // MARK: - Objc functions
+    
     @objc func signIn() {
-        guard let loginText = loginView.loginTextField.text, let passwordText = loginView.passwordTextField.text else { return }
+        // Развертывание опционалов
+        guard let loginText = loginView.loginStackView.loginTextField.text,
+              let passwordText = loginView.loginStackView.passwordTextField.text
+        else { return }
         
-        guard let user = checkUser(email: loginText) else {
-            
-            let _ = UIAlertController().customAlert(title: "Ошибка авторизации", message: "Такого пользователя не существует, либо неверно введен логин. Попробуйте заново", actionTitle: "OK") { alert in
-                present(alert, animated: true)
-            }
+        // Проверка на пустые строки
+        guard (!loginText.isEmpty && !passwordText.isEmpty)
+        else {
+            let alertVC = AlertControllerCreator()
+            present(alertVC.emptyTextFieldAlert(), animated: true)
             errorFeedbackGenerator()
             return
         }
         
-        if user.password == passwordText.lowercased() {
-            UserModel.shared.saveCurrentUser(user: user)
-            let containerVC = ContainerViewController()
-            containerVC.modalPresentationStyle = .fullScreen
-            present(containerVC, animated: true)
-        } else {
-            let _ = UIAlertController().customAlert(title: "Ошибка авторизации", message: "Неверно введен пароль. Попробуйте заново", actionTitle: "OK") { alert in
-                present(alert, animated: true)
-            }
+        // Получение пользователя по логину
+        guard let user = checkUser(email: loginText) else {
+            let alertVC = AlertControllerCreator()
+            present(alertVC.wrongLoginAlert(), animated: true)
             errorFeedbackGenerator()
+            return
         }
+        
+        // Проверка пароля
+        guard user.password == passwordText
+        else {
+            let alertVC = AlertControllerCreator()
+            present(alertVC.wrongPasswordAlert(), animated: true)
+            errorFeedbackGenerator()
+            return
+        }
+        
+        UserModel.shared.saveCurrentUser(user: user)
+        let containerVC = ContainerController()
+        containerVC.modalPresentationStyle = .fullScreen
+        present(containerVC, animated: true)
     }
     
     @objc func signUp() {
-        let signUpVC = SignUpViewController()
+        let signUpVC = SignUpController()
         let navigationVC = UINavigationController(rootViewController: signUpVC)
         navigationVC.modalPresentationStyle = .fullScreen
         present(navigationVC, animated: true)
@@ -54,6 +74,8 @@ class LoginViewController: UIViewController {
     @objc func hideKeyboard() {
         view.endEditing(true)
     }
+    
+    // MARK: - Functions
     
     private func checkUser(email: String) -> UserStruct? {
         let listOfUsers = UserModel.shared.listOfUsers
@@ -77,4 +99,3 @@ class LoginViewController: UIViewController {
         impactFeedback.impactOccurred()
     }
 }
-

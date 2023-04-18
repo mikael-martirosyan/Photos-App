@@ -13,6 +13,7 @@ class PATitleLabel: UILabel {
         super.init(frame: frame)
         
         configure()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -30,5 +31,12 @@ class PATitleLabel: UILabel {
         textAlignment = .center
         textColor = .black
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: 50),
+//            widthAnchor.constraint(equalToConstant: 200)
+        ])
     }
 }

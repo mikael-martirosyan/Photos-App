@@ -13,6 +13,7 @@ class PASignUpTextField: UITextField {
         super.init(frame: frame)
         
         configure()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -33,5 +34,11 @@ class PASignUpTextField: UITextField {
         font = UIFont.systemFont(ofSize: 17)
         textColor = .black
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: 50),
+        ])
     }
 }

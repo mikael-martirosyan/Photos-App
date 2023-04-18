@@ -13,7 +13,7 @@ class ListOfUsersCell: UITableViewCell {
     let nameLabel = PANameLabel(heading: .small)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: CellIdentifier.allUsersCell.rawValue)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupSubviews()
         setupContraints()

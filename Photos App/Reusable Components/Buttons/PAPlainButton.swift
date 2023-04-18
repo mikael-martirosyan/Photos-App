@@ -32,9 +32,9 @@ class PAPlainButton: UIButton {
     private func configure(style: PAButtonStyle) {
         switch style {
         case .default:
-            setTitleColor(.systemBlue, for: .normal)
-        case .link:
             setTitleColor(.black, for: .normal)
+        case .link:
+            setTitleColor(.systemBlue, for: .normal)
         case .cancel:
             setTitleColor(.red, for: .normal)
         }

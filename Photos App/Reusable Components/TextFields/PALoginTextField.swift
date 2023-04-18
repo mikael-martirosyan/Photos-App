@@ -13,6 +13,7 @@ class PALoginTextField: UITextField {
         super.init(frame: frame)
         
         configure()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -30,9 +31,15 @@ class PALoginTextField: UITextField {
         autocorrectionType = .no
         borderStyle = .roundedRect
         clearButtonMode = .whileEditing
-        font = UIFont.systemFont(ofSize: 15)
-        returnKeyType = .next
+        font = UIFont.systemFont(ofSize: 17)
         textColor = .black
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: 50),
+            widthAnchor.constraint(equalToConstant: 200)
+        ])
     }
 }

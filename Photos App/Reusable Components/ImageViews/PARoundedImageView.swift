@@ -34,7 +34,6 @@ class PARoundedImageView: UIImageView {
     private func configure() {
         clipsToBounds = true
         contentMode = .scaleAspectFill
-//        image = UIImage(named: "user")
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
