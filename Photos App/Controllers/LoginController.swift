@@ -9,7 +9,7 @@ import UIKit
 
 class LoginController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: - Internal properties
     
     let loginView = LoginView()
     
@@ -18,7 +18,7 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupConfig()
+        setupConfiguration()
         setupUI()
         setupSubviews()
         setupConstraints()

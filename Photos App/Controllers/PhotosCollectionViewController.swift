@@ -8,11 +8,9 @@
 import UIKit
 import Photos
 
-protocol PhotosControllerDelegate: AnyObject {
-    func didTapMenuButton()
-}
-
 class PhotosCollectionViewController: UICollectionViewController {
+    
+    // MARK: - Internal properties
     
     var assets = PHFetchResult<PHAsset>()
     
@@ -20,19 +18,32 @@ class PhotosCollectionViewController: UICollectionViewController {
     let insets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
     
     weak var delegate: PhotosControllerDelegate?
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupConfig()
+        setupConfiguration()
     }
+    
+    // MARK: - Deinitializer
     
     deinit {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
         print("PhotosCollectionViewController closed")
     }
     
-    private func setupConfig() {
+    // MARK: - Objc functions
+    
+    @objc func didTapMenuButton() {
+        guard let delegate = delegate else { return }
+        delegate.didTapMenuButton()
+    }
+    
+    // MARK: - Functions
+    
+    private func setupConfiguration() {
         guard let id = UserModel.shared.currentUser?.id else { return }
         title = "@\(id)"
         
@@ -55,12 +66,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         PHPhotoLibrary.shared().register(self)
     }
     
-    @objc func didTapMenuButton() {
-        guard let delegate = delegate else { return }
-        delegate.didTapMenuButton()
-    }
-    
-    // MARK: - Collection view Data Source
+    // MARK: - CollectionView Data Source
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return assets.count
@@ -77,6 +83,8 @@ class PhotosCollectionViewController: UICollectionViewController {
         }
         return cell
     }
+    
+    // MARK: - CollectionView Delegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let fullScreenPhotoVC = FullScreenPhotoViewController()

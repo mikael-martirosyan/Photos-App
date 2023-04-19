@@ -8,9 +8,13 @@
 import UIKit
 
 class ListOfUsersCell: UITableViewCell {
+    
+    // MARK: - Internal properties
 
     let avatarImageView = PARoundedImageView(name: "user")
     let nameLabel = PANameLabel(heading: .small)
+    
+    // MARK: - Initializers
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,6 +26,8 @@ class ListOfUsersCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Functions
     
     private func setupSubviews() {
         addSubview(avatarImageView)

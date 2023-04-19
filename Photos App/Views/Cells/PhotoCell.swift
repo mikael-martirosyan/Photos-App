@@ -9,7 +9,11 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
     
+    // MARK: - Internal properties
+    
     let photoImageView = PAPhotoImageView(photoSize: .small, contentMode: .scaleAspectFill)
+    
+    // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,6 +25,8 @@ class PhotoCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Functions
     
     private func setupSubviews() {
         contentView.addSubview(photoImageView)

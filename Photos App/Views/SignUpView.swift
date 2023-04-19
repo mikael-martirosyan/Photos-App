@@ -9,7 +9,7 @@ import UIKit
 
 class SignUpView: UIView {
     
-    // MARK: - Properties
+    // MARK: - Internal properties
     
     let signUpStackView = SignUpStackView()
     let signUpTitle = PATitleLabel(text: "Регистрация")
@@ -20,7 +20,7 @@ class SignUpView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configure()
+        setupConfiguration()
         setupSubviews()
         setupContraints()
     }
@@ -31,7 +31,7 @@ class SignUpView: UIView {
     
     // MARK: - Functions
     
-    private func configure() {
+    private func setupConfiguration() {
         translatesAutoresizingMaskIntoConstraints = false
     }
     

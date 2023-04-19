@@ -34,6 +34,12 @@ class ListOfUsersController: UITableViewController {
         setupUI()
     }
     
+    // MARK: - Objc functions
+    
+    @objc private func closeController() {
+        dismiss(animated: true)
+    }
+    
     // MARK: - Functions
     
     private func setupConfigurations() {
@@ -50,7 +56,7 @@ class ListOfUsersController: UITableViewController {
         tableView.backgroundColor = .systemBackground
     }
 
-    // MARK: - Table view data source
+    // MARK: - TableView Data Source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
@@ -69,7 +75,7 @@ class ListOfUsersController: UITableViewController {
         return cell
     }
     
-    // MARK: - Table view delegate
+    // MARK: - TableView Delegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
@@ -77,9 +83,5 @@ class ListOfUsersController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    @objc private func closeController() {
-        dismiss(animated: true)
     }
 }

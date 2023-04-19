@@ -9,7 +9,7 @@ import UIKit
 
 class LoginStackView: UIStackView {
     
-    // MARK: - Properties
+    // MARK: - Internal properties
     
     let loginTextField      = PALoginTextField(placeholder: "Введите email")
     let passwordTextField   = PALoginTextField(placeholder: "Введите пароль", isSecureTextEntry: true)
@@ -29,15 +29,15 @@ class LoginStackView: UIStackView {
     
     // MARK: - Functions
     
-    private func setupSubviews() {
-        addArrangedSubview(loginTextField)
-        addArrangedSubview(passwordTextField)
-    }
-    
     private func setupConfiguration() {
         axis = .vertical
         spacing = 20
         distribution = .fillEqually
         translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    private func setupSubviews() {
+        addArrangedSubview(loginTextField)
+        addArrangedSubview(passwordTextField)
     }
 }

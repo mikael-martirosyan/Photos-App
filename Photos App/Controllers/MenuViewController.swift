@@ -7,15 +7,17 @@
 
 import UIKit
 
-protocol MenuViewControllerDelegate: AnyObject {
-    func logOut()
-}
-
 class MenuViewController: UIViewController {
     
-    weak var delegate: MenuViewControllerDelegate?
+    // MARK: - Internal properties
+    
+    weak var delegate: LoginControllerDelegate?
+    
+    // MARK: - Private properties
     
     private let menuView = MenuView()
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +28,14 @@ class MenuViewController: UIViewController {
         setupConstraints()
     }
     
+    // MARK: - Deinitializer
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: .changeAvatar, object: nil)
         print("MenuViewController closed")
     }
+    
+    // MARK: - Objc functions
     
     @objc private func toListOfUsers() {
         let allUsersTVC = ListOfUsersController(title: "List of users")
@@ -53,6 +59,8 @@ class MenuViewController: UIViewController {
             fatalError("Image not found")
         }
     }
+    
+    // MARK: - Functions
     
     private func setupConfiguration() {
         guard let user = UserModel.shared.currentUser else { return }

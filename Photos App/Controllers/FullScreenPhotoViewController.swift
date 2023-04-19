@@ -12,24 +12,22 @@ class FullScreenPhotoViewController: UIViewController, UIGestureRecognizerDelega
     
     // MARK: - Enum
     
-    private enum StateEnum { case closed, opened }
-    
-    #warning("Порядок свойств")
-    
+    private enum StateEnum { case isClosed, isOpened }
+        
     // MARK: - Internal properties
 
     let imageView = PAPhotoImageView(photoSize: .big, contentMode: .scaleAspectFit)
     
     // MARK: - Private properties
     
-    private var state: StateEnum = .closed
+    private var state: StateEnum = .isClosed
     
     // MARK: - Life Cycle
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupConfig()
+        setupConfiguration()
         setupUI()
         setupSubviews()
         setupContraints()
@@ -39,14 +37,14 @@ class FullScreenPhotoViewController: UIViewController, UIGestureRecognizerDelega
     
     @objc private func hideStatusBar() {
         switch state {
-        case .closed:
+        case .isClosed:
             UIApplication.shared.isStatusBarHidden = true
             navigationController?.isNavigationBarHidden = true
-            state = .opened
-        case .opened:
+            state = .isOpened
+        case .isOpened:
             UIApplication.shared.isStatusBarHidden = false
             navigationController?.isNavigationBarHidden = false
-            state = .closed
+            state = .isClosed
         }
     }
     
@@ -60,7 +58,7 @@ class FullScreenPhotoViewController: UIViewController, UIGestureRecognizerDelega
     
     // MARK: - Functions
     
-    private func setupConfig() {
+    private func setupConfiguration() {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сделать аватаркой", style: .plain, target: self, action: #selector(addAvatar))
     }

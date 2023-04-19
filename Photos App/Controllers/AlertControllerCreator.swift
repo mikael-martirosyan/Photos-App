@@ -7,8 +7,6 @@
 
 import UIKit
 
-#warning("Переименовать класс")
-
 class AlertControllerCreator {
     
     func wrongLoginAlert() -> UIAlertController {
@@ -32,10 +30,12 @@ class AlertControllerCreator {
         return alert
     }
     
-    func successfulRegisterAlert(_ completion: (UIAlertAction) -> ()) {
+    func successfulRegisterAlert(controller: UIViewController) -> UIAlertController {
         let alert = UIAlertController(title: "Поздравляем!", message: "Регистрация успешно завершена!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Продолжить", style: .cancel)
-        completion(action)
+        let action = UIAlertAction(title: "Продолжить", style: .cancel) { _ in
+            controller.dismiss(animated: true)
+        }
         alert.addAction(action)
+        return alert
     }
 }

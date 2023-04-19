@@ -7,9 +7,10 @@
 
 import UIKit
 
+// MARK: - LoginController + Setup
+
 extension LoginController {
-    
-    func setupConfig() {
+    func setupConfiguration() {
         loginView.enterButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
         loginView.signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         
@@ -47,7 +48,7 @@ extension LoginController: UITextFieldDelegate {
         
         guard let index = arrangedSubviews.firstIndex(of: textField) else { return true }
         
-        var nextIndex = index + 1
+        let nextIndex = index + 1
         
         if nextIndex < arrangedSubviews.count {
             arrangedSubviews[nextIndex].becomeFirstResponder()

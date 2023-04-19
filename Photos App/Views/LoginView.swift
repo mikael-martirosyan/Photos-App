@@ -9,7 +9,7 @@ import UIKit
 
 class LoginView: UIView {
     
-    // MARK: - Properties
+    // MARK: - Internal properties
     
     let title = PATitleLabel(text: "Вход")
     

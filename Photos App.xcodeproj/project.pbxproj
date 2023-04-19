@@ -51,6 +51,10 @@
 		0CF8583F29ED9466009469B6 /* UICollectionView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8583E29ED9466009469B6 /* UICollectionView + Extension.swift */; };
 		0CF8584129EEA675009469B6 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8584029EEA675009469B6 /* Errors.swift */; };
 		0CF8586729EEFCFC009469B6 /* LoginStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8586629EEFCFC009469B6 /* LoginStackView.swift */; };
+		0CF8586929F009CB009469B6 /* SignUpController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8586829F009CB009469B6 /* SignUpController + Extension.swift */; };
+		0CF8586B29F00AF9009469B6 /* ContainerController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8586A29F00AF9009469B6 /* ContainerController + Extension.swift */; };
+		0CF8586D29F00B76009469B6 /* LoginControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8586C29F00B76009469B6 /* LoginControllerDelegate.swift */; };
+		0CF8586F29F00E7B009469B6 /* PhotosControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8586E29F00E7B009469B6 /* PhotosControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +115,10 @@
 		0CF8583E29ED9466009469B6 /* UICollectionView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extension.swift"; sourceTree = "<group>"; };
 		0CF8584029EEA675009469B6 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		0CF8586629EEFCFC009469B6 /* LoginStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStackView.swift; sourceTree = "<group>"; };
+		0CF8586829F009CB009469B6 /* SignUpController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpController + Extension.swift"; sourceTree = "<group>"; };
+		0CF8586A29F00AF9009469B6 /* ContainerController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContainerController + Extension.swift"; sourceTree = "<group>"; };
+		0CF8586C29F00B76009469B6 /* LoginControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerDelegate.swift; sourceTree = "<group>"; };
+		0CF8586E29F00E7B009469B6 /* PhotosControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +161,8 @@
 				0CF8583A29ED8C63009469B6 /* UITableViewCell + Extension.swift */,
 				0CF8583C29ED940D009469B6 /* UICollectionViewCell + Extension.swift */,
 				0CF8583E29ED9466009469B6 /* UICollectionView + Extension.swift */,
+				0CF8586829F009CB009469B6 /* SignUpController + Extension.swift */,
+				0CF8586A29F00AF9009469B6 /* ContainerController + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -259,13 +269,13 @@
 		0CABAE0327FB04830054E1B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0C0624262800EF0B004DC713 /* ListOfUsersController.swift */,
-				0C06241027FEE30F004DC713 /* ContainerController.swift */,
-				0C06242C2801BA63004DC713 /* FullScreenPhotoViewController.swift */,
 				0CABADF327FADFF10054E1B0 /* LoginController.swift */,
+				0C06241B280075BF004DC713 /* SignUpController.swift */,
+				0C06241027FEE30F004DC713 /* ContainerController.swift */,
 				0C06241227FEE33E004DC713 /* MenuViewController.swift */,
 				0CABAE0427FB04C20054E1B0 /* PhotosCollectionViewController.swift */,
-				0C06241B280075BF004DC713 /* SignUpController.swift */,
+				0C06242C2801BA63004DC713 /* FullScreenPhotoViewController.swift */,
+				0C0624262800EF0B004DC713 /* ListOfUsersController.swift */,
 				0C06242E2801E66C004DC713 /* AlertControllerCreator.swift */,
 			);
 			path = Controllers;
@@ -308,6 +318,8 @@
 			isa = PBXGroup;
 			children = (
 				0CF8583429ED8994009469B6 /* ReusableProtocol.swift */,
+				0CF8586C29F00B76009469B6 /* LoginControllerDelegate.swift */,
+				0CF8586E29F00E7B009469B6 /* PhotosControllerDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -430,12 +442,14 @@
 				0C06241127FEE30F004DC713 /* ContainerController.swift in Sources */,
 				0CF8583B29ED8C63009469B6 /* UITableViewCell + Extension.swift in Sources */,
 				0CF8584129EEA675009469B6 /* Errors.swift in Sources */,
+				0CF8586F29F00E7B009469B6 /* PhotosControllerDelegate.swift in Sources */,
 				0C781F8529EAADCC0095A42E /* PANameLabel.swift in Sources */,
 				0C0A62DF280273F300594EA4 /* NSNotification + Extension.swift in Sources */,
 				0C06241E280075ED004DC713 /* SignUpStackView.swift in Sources */,
 				0C4BF28F29EC6445002665B4 /* PACloseButton.swift in Sources */,
 				0C4BF28D29EC5EC2002665B4 /* PAIDLabel.swift in Sources */,
 				0CF8583529ED8994009469B6 /* ReusableProtocol.swift in Sources */,
+				0CF8586B29F00AF9009469B6 /* ContainerController + Extension.swift in Sources */,
 				0C781F7829E855700095A42E /* PARoundedImageView.swift in Sources */,
 				0CDA588629DCB24C00F04AC7 /* PASignUpTextField.swift in Sources */,
 				0C781F8829EAAEBC0095A42E /* PAPhotoImageView.swift in Sources */,
@@ -457,9 +471,11 @@
 				0CF8583929ED8C3A009469B6 /* UITableView + Extension.swift in Sources */,
 				0CABADF227FADFF10054E1B0 /* SceneDelegate.swift in Sources */,
 				0C062418280057DE004DC713 /* UserModel.swift in Sources */,
+				0CF8586D29F00B76009469B6 /* LoginControllerDelegate.swift in Sources */,
 				0C0624232800CA8C004DC713 /* PhotosController + Extension.swift in Sources */,
 				0C781F7C29E990A30095A42E /* PALoginTextField.swift in Sources */,
 				0C06241C280075BF004DC713 /* SignUpController.swift in Sources */,
+				0CF8586929F009CB009469B6 /* SignUpController + Extension.swift in Sources */,
 				0C781F7A29E98F2C0095A42E /* PATitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

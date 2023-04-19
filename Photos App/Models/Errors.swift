@@ -7,15 +7,17 @@
 
 import Foundation
 
-enum PAError: Error {
-    enum AuthError {
-        case wrongLogin
-        case wrongPassword
-    }
-    
-    enum SignUpError {
-        case shortLogin
-        case shortPassword
-        case emptyTextfield
-    }
-}
+#warning("Сделать применение")
+
+//enum PAError: Error {
+//    enum AuthError {
+//        case wrongLogin
+//        case wrongPassword
+//    }
+//
+//    enum SignUpError {
+//        case shortLogin
+//        case shortPassword
+//        case emptyTextfield
+//    }
+//}

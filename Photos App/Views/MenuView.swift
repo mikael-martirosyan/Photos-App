@@ -9,7 +9,7 @@ import UIKit
 
 class MenuView: UIView {
     
-    // MARK: - Properties
+    // MARK: - Internal properties
     
     let avatarImageView = PARoundedImageView()
     
