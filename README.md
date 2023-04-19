@@ -20,6 +20,13 @@
 6. Верстка кодом, без xib-ов и storyboard-ов;
 7. Сторонние библиотеки не приветстуются.
 
+### **Стек:**
+1. Foundation
+2. UIKit
+3. Photos
+4. GCD
+5. MVC
+
 ### Экран авторизации
 ![1](https://user-images.githubusercontent.com/61461432/162605616-7fd2e082-55a4-419a-916c-d08ebe9afbd9.png)
 
